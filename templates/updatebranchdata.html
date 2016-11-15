@@ -1,0 +1,49 @@
+<h2 class="page-header">Branch Details</h2>
+<h3 >Branch Name: <span ng-bind="branchname"></span></h3>
+
+<h3>About <span ng-bind="branchname"></span></h3>
+<div class="well well-lg">
+    <p ng-bind="branchdesc"></p>
+</div>
+<h3>Total Number of Events : <span ng-bind="tevents"></span></h3>
+<h3>Total Prize Money Worth : Rs.<span ng-bind="totalprize"></span></h3>
+<br>
+<br>
+<button class="btn btn-primary" data-target="#editBranchDetailsModal" data-toggle="modal">Edit Branch Details</button>
+<br>
+<br>
+<p class="text-primary">*Please be carefull while editing branch details, as these changes will reflect across the whole website @ ojass.in</p>
+
+<div class="modal fade" id="editBranchDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Branch Details</h4>
+      </div>
+      <div class="modal-body">
+        <table id="branch-head-modal-table">
+            <tr>
+                <td>Branch Name</td>
+                <td><input type="text" class="form-control" ng-model="branchname" placeholder="Branch Name"></td>
+            </tr>
+            <tr>
+                <td>Branch Description</td>
+                <td><textarea class="form-control" ng-model="branchdesc" placeholder="Branch Description"></textarea></td>
+            </tr>
+            <tr>
+                <td>Total Prize Money</td>
+                <td><input type="text" maxlength="10" class="form-control" ng-model="totalprize" placeholder="Total Prize Money"></td>
+            </tr>
+        </table>
+          <p style="color:#CB0000" ng-bind="message" ng-show="mtype==0"></p>
+          <p style="color:green" ng-bind="message" ng-show="mtype==1"></p>
+          <p style="color:dodgerblue" ng-bind="message" ng-show="mtype==2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closebrancheditmodal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="saveBranchDetails()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

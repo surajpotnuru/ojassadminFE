@@ -1,5 +1,6 @@
 body{
     background-color: #e5e5e5;
+    overflow: hidden !important;
 }
 #login-container{
     padding-top: 100px;
@@ -13,4 +14,38 @@ body{
 }
 #signinBtn{
     margin: 20px;
+}
+#dashboard-nav{
+    margin-bottom:0;
+}
+#sidebar{
+    background: #eeeeee;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+#sidebar ul{
+
+}
+#sidebar ul li{
+    padding: 15px 10px;
+    border-bottom: 1px solid grey;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: monospace;
+}
+#sidebar ul li:hover{
+    border-left: 5px solid green;
+}
+#mainpanel{
+    margin:0;
+    padding: 0px 40px;
+    height: 100vh;
+}
+#branch-head-modal-table{
+    margin: 10px;
+}
+#branch-head-modal-table td{
+    margin: 5px;
+    padding: 5px;
 }

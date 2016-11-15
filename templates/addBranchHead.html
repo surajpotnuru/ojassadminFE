@@ -1,0 +1,111 @@
+<h2 class="page-header">Add/Edit Branch Heads</h2>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBranchHeadModal">
+  Add Branch Head
+</button>
+<div style="height:800px;overflow: auto;margin-top: 20px;">
+<table class="table table-striped table-hover" style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>Branch Name</th>
+            <th>Head Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in branchheadsdata">
+            <td>{{item.branchname}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.email}}</td>
+            <td><button class="btn btn-primary" ng-click="editBH(item)">Edit</button></td>
+            <td><button class="btn btn-danger" ng-click="deleteBH(item.uid,item.name,item.branchname,item)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+<!-- Modal -->
+<div class="modal fade" id="addBranchHeadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Branch Head</h4>
+      </div>
+      <div class="modal-body">
+        <table id="branch-head-modal-table">
+            <tr>
+                <td>Enter Name</td>
+                <td><input type="text" class="form-control" ng-model="addBHName" placeholder="Full Name"></td>
+            </tr>
+            <tr>
+                <td>Enter Email</td>
+                <td><input type="email" class="form-control" ng-model="addBHEmail" placeholder="Email"></td>
+            </tr>
+            <tr>
+                <td>Enter Password</td>
+                <td><input type="password" class="form-control" ng-model="addBHPassword" placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td>Enter Mobile Number</td>
+                <td><input type="text" maxlength="10" class="form-control" ng-model="addBHPhone" placeholder="Mobile Number"></td>
+            </tr>
+            <tr>
+                <td>Select Branch</td>
+                <td>
+                    <select class="form-control" ng-model="branchid">
+                        <option ng-repeat="item in allBranchData" value="{{item.branchid}}">{{item.branchname}}</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+          <p style="color:#CB0000" ng-bind="message" ng-show="mtype==0"></p>
+          <p style="color:green" ng-bind="message" ng-show="mtype==1"></p>
+          <p style="color:dodgerblue" ng-bind="message" ng-show="mtype==2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closebhaddmodal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addBranchHead()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editBranchHeadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Branch Head</h4>
+      </div>
+      <div class="modal-body">
+        <table id="branch-head-modal-table">
+            <tr>
+                <td>Edit Name</td>
+                <td><input type="text" class="form-control" ng-model="editBHName" placeholder="Full Name"></td>
+            </tr>
+            <tr>
+                <td>Edit Email</td>
+                <td><input type="email" class="form-control" ng-model="editBHEmail" placeholder="Email"></td>
+            </tr>
+            <tr>
+                <td>Edit Mobile Number</td>
+                <td><input type="text" maxlength="10" class="form-control" ng-model="editBHPhone" placeholder="Mobile Number"></td>
+            </tr>
+
+        </table>
+          <p style="color:#CB0000" ng-bind="message" ng-show="mtype==0"></p>
+          <p style="color:green" ng-bind="message" ng-show="mtype==1"></p>
+          <p style="color:dodgerblue" ng-bind="message" ng-show="mtype==2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="closeEditBHModal()" id="closebheditmodal">Close</button>
+        <button type="button" class="btn btn-success" ng-click="editBranchHead()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

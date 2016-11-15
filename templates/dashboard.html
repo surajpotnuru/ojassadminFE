@@ -1,1 +1,29 @@
-dashboard
+<nav class="navbar navbar-default" id="dashboard-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="ojass-logo" src="../assets/ojass_black_nb.png" style="width:20px;height: auto;">
+      </a>
+        <p class="navbar-text navbar-right">Signed in as <em><span class="navbar-link" ng-bind="loggedInUserData.name"></span></em></p>
+        <button type="button" class="btn btn-danger navbar-btn right" style="position: absolute;right: 20px;" ng-click="logout()">Logout</button>
+    </div>
+
+  </div>
+</nav>
+<div class="container-fluid" style="background: white;padding:0px;height: 100vh;">
+    <div class="row" style="margin: 0;padding:0;">
+        <div class="col-lg-2" id="sidebar">
+            <ul class="list list-unstyled">
+                <li ui-sref=".addbranchhead" ng-show="loggedInUserData.access==1">Add/Edit Branch head</li>
+                <li ui-sref=".updatebranch" ng-show="loggedInUserData.access==2">Update Branch Description</li>
+                <li ui-sref=".events" ng-show="loggedInUserData.access==2">View Events</li>
+                <li>Update Results</li>
+            </ul>
+        </div>
+        <div class="col-lg-10" id="mainpanel">
+            <div ui-view>
+                <p style="margin: 100px;font-weight: bold;color: grey;font-size: 30px;">Select any action</p>
+            </div>
+        </div>
+    </div>
+</div>
