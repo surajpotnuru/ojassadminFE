@@ -12,6 +12,12 @@ angular.module("ojassadmin").controller("loginController", ['$scope', '$cookies'
     $scope.password = "";
     $scope.message = "";
     $scope.mtype = "5";
+    $("#password").keyup(function(event){
+        event.stopPropagation();
+        if(event.keyCode == 13){
+            $scope.signin();
+        }
+    });
     $scope.signin = function () {
         if ($scope.email == "" || $scope.password == "") {
             $scope.message = "Enter all Details";
@@ -23,6 +29,7 @@ angular.module("ojassadmin").controller("loginController", ['$scope', '$cookies'
                 email: $scope.email,
                 password: $scope.password
             };
+            $http.defaults.headers.common["x-access-token"] = defaulttoken;
             $http.post(commonService.apiBaseUrl + "signin", data).then(function (results) {
                 if (results.data.success == true) {
                     commonService.loggedInUserData = results.data.userData;

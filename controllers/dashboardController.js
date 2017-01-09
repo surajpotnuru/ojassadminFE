@@ -1,7 +1,7 @@
 /**
  * Created by SURAJ on 11/12/2016.
  */
-angular.module("ojassadmin").controller("dashboardController",["$scope","$http",'$cookies','$state',"commonService",function($scope,$http,$cookies,$state,commonService){
+angular.module("ojassadmin").controller("dashboardController",["$scope","$http",'$cookies','$state','$location',"commonService",function($scope,$http,$cookies,$state,$location,commonService){
     if($cookies.get("secure_token") === undefined || $cookies.get("secure_token") == defaulttoken){
         $state.go("login");
     }else{
@@ -14,7 +14,8 @@ angular.module("ojassadmin").controller("dashboardController",["$scope","$http",
     $scope.logout = function(){
         $cookies.remove("secure_token");
         $cookies.remove("uid");
-        $state.go("login");
+        // $state.go("login");
+        window.location.href="";
     }
 
 

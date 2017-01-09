@@ -1,6 +1,7 @@
+
 body{
     background-color: #e5e5e5;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
 }
 #login-container{
     padding-top: 100px;

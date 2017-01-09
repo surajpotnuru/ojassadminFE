@@ -1,1 +1,63 @@
-events
+<div style="margin-top: 20px;">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" id="eventstab">
+        <li role="presentation" ng-repeat = "item in eventsdata"><a href="#{{item.eid}}" aria-controls="{{item.eid}}" role="tab"
+                                                  data-toggle="tab">{{item.name}}</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" id="eventstabpanel">
+        <div role="tabpanel" class="tab-pane" ng-repeat="item in eventsdata" id="{{item.eid}}">
+
+            <h3 class="page-header">{{item.name}}</h3>
+            <br>
+            <h3>Event Description/Problem Statement</h3>
+            <div class="well well-lg">
+                {{item.desc_prob}}
+            </div>
+            <h3>Number of Event Coordinators : {{item.numcord}}</h3>
+            <br>
+            <h3>Total Prize Money: {{item.totalprize}}</h3>
+            <br>
+            <h3>Rules / Judging Criteria</h3><button class="btn btn-primary" ng-click="addRuleModalOpen(item.name,item.eid)">Add Rule</button>
+            <br>
+            <br>
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr><td></td></tr>
+                </tbody>
+            </table>
+            <br>
+            <h3>Penalties</h3>
+
+        </div>
+    </div>
+
+</div>
+<!--add rule modal-->
+<div class="modal fade" id="addRuleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="closeAddRuleModal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add a rule to {{addRuleCurrentEvent}}</h4>
+      </div>
+      <div class="modal-body">
+        <table id="branch-head-modal-table">
+            <tr>
+                <td>Rule</td>
+                <td><textarea class="form-control" ng-model="addedRule" placeholder="Enter Rule" style="width: 350px;height:100px"></textarea></td>
+            </tr>
+        </table>
+          <p style="color:#CB0000" ng-bind="message" ng-show="mtype==0"></p>
+          <p style="color:green" ng-bind="message" ng-show="mtype==1"></p>
+          <p style="color:dodgerblue" ng-bind="message" ng-show="mtype==2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeaddrulemodal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addRule()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
